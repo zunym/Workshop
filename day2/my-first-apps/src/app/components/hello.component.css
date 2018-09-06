@@ -1,0 +1,30 @@
+element {
+    --header-height: 50px;
+    --body-height: 90px;
+}
+.hello-header {
+    width: 300px;
+    height: var(--header-height);
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+    font-size: 1.4em;
+    text-align: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: 2px red solid;
+    line-height: 50px;
+    vertical-align: middle;
+}
+.hello-body {
+    width: 300px;
+    height: var(--body-height);
+    border-left: 2px black solid;
+    border-right: 2px black solid;
+    border-bottom: 2px black solid;
+    font-size: 2em;
+    color: black;
+    line-height: 90px;
+    text-align: center;
+    vertical-align: middle;
+}

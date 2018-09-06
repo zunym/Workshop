@@ -1,0 +1,17 @@
+<h1>Hello</h1>
+
+<div *ngIf="listOfNames.length >= 0">
+    No names to print
+</div>
+
+<div style="margin-bottom: 30px;" *ngIf="listOfNames.length > 0">
+    <!-- directive prefixed with * is a structural directive -->
+    <button type="button" *ngFor="let n of listOfNames"
+        (click)="nameSelected(n)">
+        {{ n }}
+    </button>
+</div>
+
+<app-hello [displayName]="toDisplay" (toPrint)="pleasePrintThis($event)">
+</app-hello>
+
