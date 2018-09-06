@@ -1,0 +1,10 @@
+<div *ngIf="cart.length <=0">
+Your cart is empty
+</div>
+
+<div class="cart-body" *ngFor="let i of cart; let n = index"
+(click)="removeItem(n)" >{{i}}
+</div>
+  
+
+  
