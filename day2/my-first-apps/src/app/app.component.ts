@@ -16,8 +16,4 @@ export class AppComponent {
   }
 
   //name is $event - from toPrint.next(this.displayName)
-  pleasePrintThis(eventObject: ToPrint) {
-    console.log('>>> from app-hello: ', eventObject);
-
-  }
 }
