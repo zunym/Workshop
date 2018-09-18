@@ -9,24 +9,23 @@ const app = express();
 //nodemon will look for 
 //main attribute starting file in package.json [eg:main.js]
 
-
 app.use(
     express.static(//middleware to serve static files
-        path.join(__dirname + '/public')
+        path.join(__dirname + 'public')
     )
 ); //any req come in use this rule to handle it
 
 app.use(
     express.static(//middleware to serve static files
-        path.join(__dirname + '/media')
+        path.join(__dirname + 'media')
     )
 );
+
 
 //Error Message Route to 404
 app.use((req, resp) => {//middleware
     resp.status(404);
     resp.sendfile(path.join(__dirname, 'media', '404.png'));
-
 });
 
 app.listen(3000, () => {
