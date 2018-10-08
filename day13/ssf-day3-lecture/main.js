@@ -17,12 +17,46 @@ app.set('views','views');
 
 //making http call to external api
 //querystring
+
+//Create routes
+app.get('/rates', (req, resp) => {
+
+    request.get('http://data.fixer.io/api/latest', 
+        //{ qs: { access_key: '__YOUR_API_KEY__' } },
+        { qs: { access_key: 'ce94f182e906d4deb5c0ed7e92efe2d9' } },
+        (err, response, body) => {
+            if (err) {
+                resp.status(400);
+                resp.type('text/plain');
+                resp.send(err);
+                return;
+            }
+
+            //Parse the JSON string to JSON
+            const result = JSON.parse(body);
+            const rates = result.rates;
+            const rateArray = []
+            for (let c of Object.keys(rates)) 
+                rateArray.push({ currency: c, rate: rates[c] });
+
+            resp.status(200);
+            resp.render('rates', { 
+                baseRate: result.base,
+                date: result.date,
+                rates: rateArray, 
+                layout: false 
+            });
+        }
+    )
+
+});
+
 app.get('/httpbin',(req,resp)=>{
     const param ={
         name: 'fred',
         email: 'fred@email.com'
     };
-    console.info('param = '+ qs.stringify(param) );
+    //console.log('param = '+ qs.stringify(param) );
     request.get('http://httpbin.org/get?',
     {
         qs:{
@@ -30,7 +64,7 @@ app.get('/httpbin',(req,resp)=>{
             email: 'bred@email.com'
         }
     },
-    (err,resp,body)=>{
+    (err,result,body)=>{
         if(err){
             // console.err(`error: ${err}`); //ask question
             resp.status(400);

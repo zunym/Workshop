@@ -1,0 +1,88 @@
+<mat-toolbar color="primary">
+    <link rel="shortcut icon" href="assets/logo.jpg" style="width:10px;height:10px;" type="image/x-icon"> {{title}}
+</mat-toolbar>
+
+
+<!-- Accessing Value -->
+<!-- <h1>{{title}}</h1> -->
+
+<form class="form-control" #rgForm="ngForm" (ngSubmit)="processLP(rgForm)" fxLayout="column row">
+
+    <mat-form-field>
+        <input type="email" name="email" placeholder="Enter Your Email " #emailField="ngModel" ngModel matInput color="primary" required
+            email>
+        <mat-hint>xxx@xxx.com</mat-hint>
+        <mat-error *ngIf="emailField.hasError('email')">
+            Must be a valid email
+        </mat-error>
+    </mat-form-field>
+
+    
+    <mat-form-field>
+        <input type="password" name="password" placeholder="Enter Your Passsword" ngModel matInput color="primary" minlength="2"
+            maxlength="20" required password>
+        <mat-hint>password must adhere</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input type="text" name="name" placeholder="Text Your Name" ngModel matInput color="primary" minlength="2" maxlength="20"
+            required>
+        <mat-hint>name</mat-hint>
+    </mat-form-field>
+
+    <mat-radio-group name="gender" ngModel fxLayout="column row">
+        <mat-radio-button value="female">Female</mat-radio-button>
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-hint>select your gender</mat-hint>
+    </mat-radio-group>
+
+    <mat-form-field>
+        <input name="birthYear" placeholder="Your Date Of Birth" #btField="ngModel" ngModel matInput [matDatepicker]="mydate" min="9/7/2000"
+            max="9/7/1933" required birthYear>
+        <mat-datepicker-toggle matSuffix [for]="mydate">
+        </mat-datepicker-toggle>
+        <mat-datepicker #mydate></mat-datepicker>
+        <mat-hint>pick from calender</mat-hint>
+        <mat-error *ngIf="btField.hasError('birthYear')">
+            Registrant must be at least 18 years old
+        </mat-error>
+        
+
+    </mat-form-field>
+
+    <mat-form-field>
+        <input type="text" name="address" placeholder="Fill in Address" ngModel matInput color="primary" minlength="2" maxlength="40"
+            required>
+        <mat-hint>blk and street name</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input type="text" name="city" placeholder="Fill in City" ngModel matInput color="primary" minlength="2" maxlength="40" required>
+        <mat-hint>city</mat-hint>
+    </mat-form-field>
+
+    <!-- <mat-list>
+        <mat-list-item *ngFor="let city of listOfCities, let i = index">
+            <button mat-raised-button color="accent" (click)="navigateToList(city)"> {{city | uppercase}} </button>
+            <button mat-mini-fab color="warn" style="margin:0.2em;" (click)="deleteCity(i)"> X </button>
+        </mat-list-item>
+    </mat-list> -->
+
+    <mat-form-field>
+        <input type="number" name="phone" placeholder="Contact Number" ngModel matInput color="primary" minlength="8" required number>
+        <mat-hint>Have Numeric Number </mat-hint>
+    </mat-form-field>
+
+
+    <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="8px">
+        <button type="reset" mat-button mat-raised-button color="accent">
+            <mat-icon>clear</mat-icon>Clear
+        </button>
+
+        <button type="submit" mat-button mat-raised-button color="primary" [disabled]="rgForm.invalid == true">
+            <mat-icon>add</mat-icon>Submit
+        </button>
+    </div>
+
+
+</form>

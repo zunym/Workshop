@@ -1,0 +1,39 @@
+<h1>Search Giphy</h1>
+
+<form #form="ngForm" (ngSubmit)="doSearch()">
+
+  <table>
+    <tr>
+      <td>Search Term:</td>
+      <td>
+        <input type="text" name="searchTerm" 
+        required ngModel>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Result:</td>
+      <td>
+        <input type="number" name="resultCount" min="1" 
+        value="10" required ngModel>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Final</td>
+      <td>
+        <button type="submit"
+        [disabled]="form.invalid">
+          Search
+        </button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<div *ngIf="resultCount">
+  <h3>Search result for '{{ result.searchTerm }}' (cache: {{result.fromCache }})</h3>
+  <div *ngFor="let i of result.images">
+    <img [src]="i" alt=""> 
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>HBS</title>
+    </head>
+    <body>
+
+        <h1>Giphy Search</h1>
+
+        <form method="GET" action="/search">
+
+            <table>
+                <tr>
+                    <td>Search Term:</td>
+                    <td> <input type="text" name="searchTerm"> </td>
+                </tr>
+                <tr>
+                    <td>Result:</td>
+                    <td>
+                        <input type="number" name="resultCount" min="1" value="10">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button type="submit">Search</button>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+
+        {{#if searchTerm }}
+            <h3>Search result for '{{ searchTerm }}' (cache: {{ fromCache }})</h3>
+            
+            {{#each images}}
+                <div><img src="{{ this }}" alt=""></div>
+            {{/each}}
+        {{/if}}
+
+        <h1>Query FIlter</h1>
+
+        <form method="GET" action="/api/brand">
+
+            <table>
+                <tr>
+                    <td>Search Term:</td>
+                    <td> <input type="text" name="searchBrand"> </td>
+                </tr>
+                {{!-- <tr>
+                    <td>Result:</td>
+                    <td>
+                        <input type="number" name="resultCount" min="1" value="10">
+                    </td>
+                </tr> --}}
+                <tr>
+                    <td></td>
+                    <td>
+                        <button type="submit">Search</button>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+
+        {{!-- {{#if searchBrand }}
+            <h3>Search result for '{{ searchBrand }}' (cache: {{ fromCache }})</h3>
+            
+            {{#each searchBrand}}
+                <div>{{ this }}</div>
+            {{/each}}
+        {{/if}} --}}
+    </body>
+</html>

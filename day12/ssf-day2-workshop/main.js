@@ -38,12 +38,9 @@ app.get('/random-image', (req, resp) => {
     resp.sendfile(path.join(__dirname, 'images', imageFile));
 });
 for (let res of resources) {
-    console.info(`Adding ${res} to static`)
+    console.log(`Adding ${res} to static`)
     app.use(express.static(path.join(__dirname, res)));
 }
-
-
-
 
 //error
 app.use((res,resp)=>{

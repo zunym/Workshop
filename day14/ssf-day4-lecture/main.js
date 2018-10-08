@@ -16,8 +16,13 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
 
 app.post('/uuidv5', (req, resp) => {
+    console.log('after req.body=', req.body);
+    console.log('after req.body.namespace=', req.body.namespace);
+    console.log('after req.body.uuidCount=', req.body.uuidCount);
+
     const ns = req.body.namespace;
-    const count = parseInt(req.query.uuidCount) || 2;
+    //const count = parseInt(req.query.uuidCount) || 2;
+    const count = parseInt(req.body.uuidCount) || 2;
     const uuidList = [];
 
     for (let i = 0; i < count; i++)

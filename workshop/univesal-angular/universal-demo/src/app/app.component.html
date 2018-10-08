@@ -1,0 +1,25 @@
+<h1>Sakila Movie Database - Angular</h1>
+
+<table border="1">
+  <thead>
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Year</th>
+        <th>Rating</th>
+        <th>Special Features</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let f of films">
+        <td>{{ f.film_id }}</td>
+        <td>{{ f.title }}</td>
+        <td>{{ f.description }}</td>
+        <td>{{ f.release_year }}</td>
+        <td>{{ f.rating }}</td>
+        <td>{{ f.special_features }}</td>
+      </tr>
+  </tbody>
+</table>
+
