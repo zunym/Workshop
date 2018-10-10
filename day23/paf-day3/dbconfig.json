@@ -1,0 +1,6 @@
+{
+    "host":"localhost", "post":3306,
+    "user": "benny", "password":"Putu542328",
+    "database":"sakila",
+    "connectionLimit":4   
+}

@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 //config of db
 const dbconfig = {
     host: 'localhost' , port:3306,
-    user: 'root', password:'Putu542328',
+    user: 'benny', password:'Putu542328',
     database:'addressbook',
     connectionLimit:4
 };
@@ -100,7 +100,7 @@ pool.getConnection((err,conn)=>{
     })
 });
 
-
+// direct connection query
 // const name = process.argv[2];
 // pool.getConnection((err,conn)=>{
 //     if(err){
