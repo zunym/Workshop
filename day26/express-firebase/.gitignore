@@ -1,0 +1,4 @@
+node_modules
+onfire.json
+*.tmp
+*.log

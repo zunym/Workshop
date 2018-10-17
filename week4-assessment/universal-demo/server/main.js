@@ -12,7 +12,6 @@ const ngRenderer = require('@nguniversal/express-engine');
 //Load your angular application
 const server = require('../dist/universal-demo-server/main');
 
-
 //For Express
 const path = require('path');
 const mysql = require('mysql');
